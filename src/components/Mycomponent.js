@@ -1,18 +1,32 @@
-import React from "react";
-class MyComponent extends React.Component {
+import React, { useState } from "react";
+import AddInfor from "./AddInfor";
+import DisplayInfor from "./DisplayInfor";
+const MyComponent = (props) => {
+    const [listUser, setlistUser] = useState([
+        { id: 1, name: "Huy", age: "21" },
+        { id: 2, name: "Vy", age: "16" },
+        { id: 3, name: "Vu", age: "18" }
+    ])
 
-    state = {
-        name: 'Huy',
-        address: 'Hoi An',
-        age: 21,
+
+    const handleAddUser = (userObject) => {
+        setlistUser([...listUser, userObject])
     }
 
-    render() {
-        return (
-            <div>My name is{this.state.name}
-                and I'm from {this.state.address}
-            </div>
-        )
+    const handleDeleteUser = (userId) => {
+        let listUserWasDelete = listUser
+        listUserWasDelete = listUserWasDelete.filter(item => item.id !== userId)
+        setlistUser([...listUserWasDelete])
     }
+
+    const ojb = true
+    return (
+        <>
+            {JSON.stringify(ojb)}
+            <AddInfor handleAddUser={handleAddUser} />
+            <DisplayInfor listUser={listUser} handleDeleteUser={handleDeleteUser} />
+        </>
+    )
 }
+
 export default MyComponent;
