@@ -1,7 +1,26 @@
 .manage-user-container {
-    .user-title {}
+    height: 100%;
+
+    .user-title {
+        margin-bottom: 2rem;
+    }
 
     .user-content {
+        height: 100%;
+
+        .table-users-container {
+            margin: 1rem 0;
+            height: 100%;
+
+
+            .title-no-user {
+                display        : flex;
+                justify-content: center;
+                height         : 100%;
+                width          : 100%;
+                margin-top     : 10%;
+            }
+        }
 
         .btn-add-new {
             button {
@@ -16,7 +35,6 @@
                 align-items     : center;
                 justify-content : center;
                 gap             : 0.5rem;
-
             }
 
             button:hover {
@@ -95,4 +113,40 @@
             overflow: auto;
         }
     }
+}
+
+.btn-open-close-side-bar {
+    padding-top    : 1rem;
+    padding-right  : 0.5rem;
+    display        : flex;
+    justify-content: flex-end;
+}
+
+.flex-center {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+.pd-1 {
+    padding: 1rem !important;
+}
+
+.logo {
+    padding: 1.25rem;
+
+
+    span {
+        text-transform: uppercase;
+        font-weight   : bold;
+        font-size     : 14px;
+        letter-spacing: 1px;
+        overflow      : hidden;
+        text-overflow : ellipsis;
+        white-space   : nowrap;
+    }
+}
+
+.bd-white {
+    border: 1px solid white;
 }

@@ -9,44 +9,39 @@ import {
     SidebarContent,
 } from 'react-pro-sidebar';
 
-import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 import sidebarBg from '../../Assets/bg2.jpg';
-
 import { DiReact } from 'react-icons/di'
-import { MdDashboard, MdOutlineFeaturedPlayList } from 'react-icons/md'
+import { MdJoinLeft, MdJoinRight, MdOutlineFeaturedPlayList } from 'react-icons/md'
 import { LuLayoutDashboard } from "react-icons/lu";
 
 
 import './scss/SideBar.scss';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const SideBar = (props) => {
-    const { image, collapsed, toggled, handleToggleSidebar } = props;
+    const { toggled, handleToggleSidebar } = props;
+
+    const [collapsed, setCollapsed] = useState(false);
+
     return (
         <>
-            <ProSidebar
 
+            <ProSidebar
                 image={sidebarBg}
                 collapsed={collapsed}
                 toggled={toggled}
                 breakPoint="md"
                 onToggle={handleToggleSidebar}
             >
+                <div className={collapsed ? 'flex-center btn-open-close-side-bar' : 'btn-open-close-side-bar'}>
+                    {collapsed ? <MdJoinLeft size={'2.5rem'} onClick={() => setCollapsed(!collapsed)} /> : <MdJoinRight size={'2.5rem'} onClick={() => setCollapsed(!collapsed)} />}
+                </div>
                 <SidebarHeader>
-                    <div
-                        style={{
-                            padding: '24px',
-                            textTransform: 'uppercase',
-                            fontWeight: 'bold',
-                            fontSize: 14,
-                            letterSpacing: '1px',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap',
-                        }}
-                    >
-                        <DiReact size={'3rem'} color={'00bfff'} />
-                        React Pro Sidebar
+                    <div className={collapsed ? "pd-1 logo flex-center" : "logo flex-center"}>
+                        <DiReact size={collapsed ? '4rem' : '3rem'} color={'00bfff'} />
+                        {collapsed ? "" : <span >React Pro Sidebar</span>}
                     </div>
                 </SidebarHeader>
 

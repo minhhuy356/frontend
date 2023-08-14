@@ -1,7 +1,8 @@
 import { useState } from "react"
-import ModalCreateUser from "../ModalCreateUser"
+import ModalCreateUser from "./ModalCreateUser"
 import './scss/ManageUser.scss'
 import { FaRegAddressCard } from 'react-icons/fa'
+import TableUsers from "./TableUsers"
 const ManageUser = (props) => {
 
     const [showModelCreateUser, setShowModelCreateUser] = useState(false)
@@ -19,8 +20,8 @@ const ManageUser = (props) => {
                         <FaRegAddressCard />Add new user
                     </button>
                 </div>
-                <div className="table-users-c">
-                    table users
+                <div className="table-users-container">
+                    <TableUsers />
                 </div>
                 <ModalCreateUser show={showModelCreateUser} setShow={setShowModelCreateUser} />
             </div>

@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FcPlus } from 'react-icons/fc'
-import axios from 'axios';
 import { toast } from 'react-toastify';
+import { postCreateUser } from '../../../../services/ApiService';
 
 const ModalCreateUser = (props) => {
     const { show, setShow } = props;
@@ -20,8 +20,8 @@ const ModalCreateUser = (props) => {
     const [password, setPassword] = useState("");
     const [userName, setUserName] = useState("");
     const [role, setRole] = useState("User");
-    const [image, setImage] = useState();
-    const [previewImage, setPreviewImage] = useState();
+    const [image, setImage] = useState("");
+    const [previewImage, setPreviewImage] = useState("");
 
     const handleUploadImage = (event) => {
         if (event.target && event.target.files && event.target.files[0]) {
@@ -41,7 +41,6 @@ const ModalCreateUser = (props) => {
 
     const handleSubmitCreateUser = async () => {
         //validate
-
         const isValidateEmail = validateEmail(email)
         if (email === "") {
             toast.error('Chưa nhập email')
@@ -55,26 +54,14 @@ const ModalCreateUser = (props) => {
             toast.error('Chưa nhập password')
             return
         }
-        if (userName === '') {
-            toast.error('Chưa nhập tên')
-            return
-        }
 
 
-
-        const data = new FormData();
-        data.append('email', email);
-        data.append('password', password);
-        data.append('userName', userName);
-        data.append('role', role);
-        data.append('image', image);
-
-        let res = await axios.post('http://localhost:8081/api/v1/participant', data)
-        if (res.data && res.data.EC === 0) {
+        let data = await postCreateUser(email, password, userName, role, image)
+        if (data && data.EC === 0) {
             toast.success('Thêm người dùng thành công')
             handleClose()
         }
-        if (res.data && res.data.EC !== 0) {
+        if (data && data.EC !== 0) {
             toast.error('Email ' + email + ' đã tồn tại')
         }
     }
@@ -129,7 +116,7 @@ const ModalCreateUser = (props) => {
                         />
                     </div>
                     <div className="col-md-12 img-preview">
-                        {previewImage ? <img src={previewImage} value={image} /> : <span>Preview Img</span>}
+                        {previewImage ? <img src={previewImage} /> : <span>Preview Img</span>}
                     </div>
                 </form></Modal.Body>
                 <Modal.Footer>
