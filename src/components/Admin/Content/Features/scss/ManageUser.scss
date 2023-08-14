@@ -1,0 +1,98 @@
+.manage-user-container {
+    .user-title {}
+
+    .user-content {
+
+        .btn-add-new {
+            button {
+                background-color: white;
+                color           : black;
+                border-color    : black;
+                padding         : 0.5rem 1rem;
+                border-radius   : 0.5rem;
+                transition      : ease 0.3s;
+                font-weight     : 700;
+                display         : flex;
+                align-items     : center;
+                justify-content : center;
+                gap             : 0.5rem;
+
+            }
+
+            button:hover {
+                background-color: black;
+                color           : white;
+            }
+        }
+    }
+}
+
+
+.modal-add-user {
+
+
+    .img-preview {
+        border         : 1px #ccc;
+        border-style   : dashed;
+        height         : 150px;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+
+        span {
+            opacity: 0.7;
+        }
+    }
+
+    img {
+        max-width : 100%;
+        max-height: 100%;
+
+    }
+
+    .label-upload {
+        display        : flex;
+        justify-content: start;
+        align-items    : center;
+        cursor         : pointer;
+        gap            : 8px;
+
+
+        span {
+            color: #808080;
+        }
+
+
+    }
+
+    .label-upload:hover span {
+        color: black;
+    }
+}
+
+
+.modal {
+    position       : fixed;
+    display        : flex !important;
+    justify-content: center;
+    align-items    : center;
+    top            : 0;
+    bottom         : 0;
+    right          : 0;
+    left           : 0;
+    padding        : 2.5rem;
+    max-height     : 100%;
+    overflow       : hidden;
+
+    .modal-dialog.modal-xl {
+        margin    : 0;
+        display   : flex;
+        max-height: 100%;
+        height    : auto;
+
+        .modal-content {
+            display : flex;
+            overflow: auto;
+        }
+    }
+}

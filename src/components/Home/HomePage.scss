@@ -1,0 +1,50 @@
+.homepage-container {
+    .homepage-container-1 {
+        display    : flex;
+        align-items: center;
+
+        .homepage-container-video {
+            width: 60%;
+        }
+
+        .homepage-container-content {
+            width: 40%;
+
+            .homepage-container-content-h1 {
+                margin-bottom: 1.5rem;
+
+                @media (min-width: 1200px) {
+                    h1 {
+                        font-size  : 5rem;
+                        line-height: 100%;
+                    }
+                }
+            }
+
+            .homepage-container-content-h2 {
+
+                @media (min-width: 1200px) {
+                    h2 {
+                        font-size  : 1.5rem;
+                        line-height: 133%;
+                    }
+                }
+            }
+
+            .homepage-container-content-navlink {
+                margin-top: 3rem;
+
+                a {
+                    color           : rgb(255, 255, 255);
+                    background-color: rgb(26, 26, 25);
+                    padding         : 0.75rem 1.5rem;
+                    border-radius   : 0.5rem;
+                    line-height     : 1.5;
+                    text-align      : center;
+                    text-decoration : none;
+                    font-weight     : 700;
+                }
+            }
+        }
+    }
+}
